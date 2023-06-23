@@ -1,0 +1,40 @@
+//spiral matrix print
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> spiratMatrix(vector<vector<int>> mat){
+    int sx = 0;
+    int sy = 0;
+    int ex = mat.size()-1;
+    int ey = mat[0].size()-1;
+    vector<int> result(mat.size()*mat[0].size());
+    int ctr = 0;
+    while(sx<=ex && sy <=ey){
+        for(int  j= sy;j<=ey;j++){
+            result[ctr] = mat[sx][j];
+            ctr++;
+        }
+        sx++;
+        for(int i = sx ; i<=sy;i++){
+            result[ctr] = mat[i][ey];
+        }
+        ey--;
+        if(sx <=ex){
+            for(int j = ey;j>sy;j--){
+                result[ctr++] = mat[ex][j];
+            }
+            sy--;
+        }
+        if(sy<=ey){
+            for(int i = ex;i>=sx;i--){
+                result[ctr++]=mat[i][sy];
+            }
+            sy++;
+        }
+    }
+}
+
+int main(){
+}
